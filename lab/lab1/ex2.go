@@ -1,24 +1,18 @@
 package main
 
-
 import (
 	"fmt"
-	"strings"
 )
 
 func main() {
 	lineWidth := 5
 	symb := "x"
 	lineSymb := symb
-	for i:=0; i< lineWidth; i++{
-		formatStr := fmt.Sprintf("%%%ds\n", lineWidth)
+	formatStr := fmt.Sprintf("%%%ds\n", lineWidth)
+	for ; len(lineSymb) < lineWidth; lineSymb += symb {
 		fmt.Printf(formatStr, lineSymb)
-		lineSymb += "x"
 	}
-	lineSymb = strings.TrimSuffix(lineSymb,"x")
-	for i:=3; i>= 0; i--{
-		lineSymb = strings.TrimSuffix(lineSymb,"x")
-		formatStr := fmt.Sprintf("%%%ds\n", lineWidth)
+	for ; len(lineSymb) > 0; lineSymb = lineSymb[:len(lineSymb)-1] {
 		fmt.Printf(formatStr, lineSymb)
 	}
 }
