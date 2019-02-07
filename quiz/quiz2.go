@@ -1,5 +1,10 @@
 /** CSI 2520 Quiz 2 - Maxime Côté-Gagné - 8851539**/
-
+/*
+Le programme suivant doit être modifié de telles sortes qu’il utilise un « slice » de taille arbitraire au lieu d’un tableau fixe.
+La taille soumit par l’utilisateur (variable sz) doit remplacer la valeur 32 codé en dur de la taille du tableau.
+Modifiez la fonction main, ainsi que les autres fonctions si nécessaire.
+Soumettez votre solution en un fichier go.
+*/
 package main
 
 import "fmt"
