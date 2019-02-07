@@ -1,4 +1,14 @@
 /** CSI 2520 Quiz 3 - Maxime Côté-Gagné - 8851539**/
+/*
+TriFusion Parallele
+Ce quiz est tiré du Blog de T. Harsanyi https://hackernoon.com/parallel-merge-sort-in-go-fe14c1bc006
+
+Vous pouvez trouver le code source complet ici: https://github.com/teivah/golang-parallel-mergesort/blob/master/mergesort.go
+
+En fait, la version concurrente du tri fusion est très similaire à la version séquentielle. La seule différence est que les deux appels récursifs se font à l'aide des goroutines. Remarquer que le programme utilise les WaitGroup afin de synchroniser les deux appels récursifs. Aussi, dans cette version, une goroutine est créée seulement si la dimension du tableau est suffisamment grande.
+
+Je vous demande ici de modifier la fonction parallelMergesort de facon à ce qu'elle utilise les channels pour la synchronisation au lieu du WaitGroup.
+*/
 package main
 
 import (
