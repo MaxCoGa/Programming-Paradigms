@@ -1,4 +1,5 @@
-/** CSI 2520 Quiz 3 - Maxime Côté-Gagné - 8851539**/
+/** CSI 2520 - Quiz 3 - Maxime Côté-Gagné - 8851539 **/
+
 /*
 TriFusion Parallele
 Ce quiz est tiré du Blog de T. Harsanyi https://hackernoon.com/parallel-merge-sort-in-go-fe14c1bc006
