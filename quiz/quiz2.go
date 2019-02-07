@@ -1,4 +1,5 @@
-/** CSI 2520 Quiz 2 - Maxime Côté-Gagné - 8851539**/
+/** CSI 2520 - Quiz 2 - Maxime Côté-Gagné - 8851539 **/
+
 /*
 Le programme suivant doit être modifié de telles sortes qu’il utilise un « slice » de taille arbitraire au lieu d’un tableau fixe.
 La taille soumit par l’utilisateur (variable sz) doit remplacer la valeur 32 codé en dur de la taille du tableau.
