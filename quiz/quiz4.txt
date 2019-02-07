@@ -1,0 +1,31 @@
+/** CSI 2520 Quiz 4 - Maxime Côté-Gagné - 8851539**/
+/**
+Prédicat simple
+Le prédicat occupé/1 ci-dessous pourrait se lire ainsi :
+
+Une personne est occupée si elle a deux emplois
+
+employe(tom,shopify).
+employe(eva,shopify).
+employe(eva,ibm).
+employe(sam,cisco).
+employe(sam,bridehead).
+occupe(X):-employe(X,C1),employe(X,C2).
+
+Malheureusement, il semble y avoir un problème dans la définition de ce prédicat car l'employé tom est aussi donné comme solution alors qu'il n'a qu'un seul emploi. Expliquer pourquoi et corriger le problème.
+**/
+
+Le problème est simple, la dernière ligne, occupe(X):-employe(X,C1),employe(X,C2)., qui dit qu'est-ce qu'être "occupé", permet les solutions où un employé à seulement un emplois, car C1 et C2 peuvent être pareil, alors employe(tom,shopify) est une solution, car shopify peut être égal à lui même. 
+
+Pour régler ce problème, il suffit d'ajouter "\+ C1=C2" à la dernière ligne de l'énoncé qui permet de faire en sorte que dans le cas de tom shopify ne peut pas être égal à shopify(donc, il ne peut être égal à lui même) alors "employe(tom,shopify)" ne sera pas une solution à "occupe(X):-employe(X,C1),employe(X,C2), \+ C1=C2."
+
+Nouveau
+employe(tom,shopify).
+employe(eva,shopify).
+employe(eva,ibm).
+employe(sam,cisco).
+employe(sam,bridehead).
+occupe(X):-employe(X,C1),employe(X,C2), \+ C1=C2. 
+
+
+
