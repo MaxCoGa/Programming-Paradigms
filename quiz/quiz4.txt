@@ -1,4 +1,5 @@
-/** CSI 2520 Quiz 4 - Maxime Côté-Gagné - 8851539**/
+/** CSI 2520 - Quiz 4 - Maxime Côté-Gagné - 8851539 **/
+
 /**
 Prédicat simple
 Le prédicat occupé/1 ci-dessous pourrait se lire ainsi :
