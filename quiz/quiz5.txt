@@ -1,0 +1,31 @@
+/** CSI 2520 - Quiz 5 - Maxime Côté-Gagné - 8851539 **/
+
+/*
+Prédicat valeur absolue
+Voici la définition du prédicat valeur absolue:
+
+absolute_value(X, X) :- X >= 0.
+
+absolute_value(X, Y) :- Y is -X.
+
+Toutefois, lorsque celui-ci est testé avec une valeur positive, 2 solutions sont obtenues:
+
+?- absolute_value(42, V).
+
+V = 42 ;
+
+V = -42 ;
+
+No
+
+Expliquer pourquoi et corriger le prédicat.
+*/
+
+Ici quand on teste avec un valeur positive X, X répond vrai au X>=0 et donc il retourne une première valeur. Il répond aussi vrai a Y is -X et donc retroune la valeur négative de X.
+
+Le problème est donc que si la valeur est positive nous allons effectuer le prédicats au complet au lieu de seulement la première clause
+
+Pour résoudre ce problème on peut mettre la deuxième clause dans la première à l'aide des conditons. Voici comment le prédicat peut être écrit: absolute_value(X, Y) :- X < 0 -> Y is -X ; Y = X.
+
+Donc la première clause, absolute_value(X, X) :- X >= 0., se traduit ici par Y=X si X < 0 -> Y is -X est faux.(qui est d'ailleurs la deuxième clause absolute_value(X, Y) :- Y is -X.). Avec cette structure on recherche d'abord si la valeur X est négative et si elle est négative alors on remet sa valeur positive(Y). Si elle est positive alors la première condition est fausse et donc Y = X.
+
