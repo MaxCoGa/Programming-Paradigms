@@ -1,0 +1,23 @@
+/** CSI 2520 - Quiz 6 - Maxime Côté-Gagné - 8851539 **/
+
+/*
+Le prédicat suivant compte le nombre d'occurrence d'un élément dans une liste:
+
+?- occurrence([a,b,c,b,d,b],b,X).
+X = 3
+
+Voici la définition de ce prédicat:
+
+occurrence([],_,0).
+occurrence([X|L],X,N) :- occurrence(L,X,N1),N is N1+1.
+
+Toutefois, il manque une règle afin que ce prédicat fonctionne comme il se doit, quelle est-elle?
+*/
+Il manque la règle :
+	occurrence([Y|L],X,N) :- X\==Y,occurrence(L,X,N).
+
+Elle permet de continuer à faire l'occurence quand la nouvelle liste L est différente de la première.
+
+occurrence([],_,0). %Règle 1
+occurrence([X|L],X,N) :- occurrence(L,X,N1),N is N1+1. %Règle 2
+occurrence([Y|L],X,N) :- X\==Y,occurrence(L,X,N).%Règle 3
