@@ -269,9 +269,9 @@ func (p *problem) steppingStone() {
 			if p.matrix[r][c] != routes {
 				continue
 			}
-			zero := transport{0, p.costs[r][c], r, c}
+			empty := transport{0, p.costs[r][c], r, c}
 			//We need to find every cell with no capacity
-			path = p.findEmptyCell(zero)
+			path = p.findEmptyCell(empty)
 			p.marginalCosts(path)
 			//wg.Wait()
 		}
@@ -284,18 +284,18 @@ func (p *problem) steppingStone() {
  */
 func (p *problem) marginalCosts(path []transport) {
 	defer wg.Done()
-	maxReduction := 0.0
+	max := 0.0
 	var pas []transport
 	change := routes
-	reduction := 0.0
+	remove := 0.0
 	lowCap := float64(math.MaxInt32) //doesnt work with int
 	next := routes
 	plus := true
 	for _, t := range path {
 		if plus {
-			reduction += t.costCell
+			remove += t.costCell
 		} else {
-			reduction -= t.costCell
+			remove -= t.costCell
 			if t.capacity < lowCap {
 				next = t
 				lowCap = t.capacity
@@ -303,25 +303,25 @@ func (p *problem) marginalCosts(path []transport) {
 		}
 		plus = !plus
 	}
-	if reduction < maxReduction {
+	if remove < max {
 		pas = path
 		change = next
-		maxReduction = reduction
+		max = remove
 	}
 
 	if pas != nil {
-		q := change.capacity
+		cap := change.capacity
 		plus := true
-		for _, t := range pas {
+		for _, trans := range pas {
 			if plus {
-				t.capacity += q
+				trans.capacity += cap
 			} else {
-				t.capacity -= q
+				trans.capacity -= cap
 			}
-			if t.capacity == 0 {
-				p.matrix[t.row][t.colunm] = routes
+			if trans.capacity == 0 {
+				p.matrix[trans.row][trans.colunm] = routes
 			} else {
-				p.matrix[t.row][t.colunm] = t
+				p.matrix[trans.row][trans.colunm] = trans
 			}
 			plus = !plus
 		}
@@ -359,13 +359,13 @@ func (p *problem) findEmptyCell(t transport) []transport {
 	}
 
 	//reorder remaining elems
-	stones := make([]transport, chemin.Len())
+	pas := make([]transport, chemin.Len())
 	prev := t
-	for i := 0; i < len(stones); i++ {
-		stones[i] = prev
+	for i := 0; i < len(pas); i++ {
+		pas[i] = prev
 		prev = p.findNearest(prev, chemin)[i%2]
 	}
-	return stones
+	return pas
 }
 
 /*
@@ -450,6 +450,7 @@ func (p *problem) prinstCosts() {
  * input file name use to find a solution to the
  * transportation problem from a description given by the user
  * and the initial solution of the given description
+ * e.g.: transport.txt
  */
 func main() {
 	//input := "3x4.txt"
