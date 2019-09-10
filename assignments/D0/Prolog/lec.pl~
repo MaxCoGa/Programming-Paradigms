@@ -1,0 +1,11 @@
+notre-insert(A,L,[A|L]).
+notre-insert(A,[X|L],[X|LL]:-
+             notre-insert(A,L,LL).
+
+
+
+nonegal([]).
+nonegal([]).
+nonegal([]).
+nonegal([]).
+

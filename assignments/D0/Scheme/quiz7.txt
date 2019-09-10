@@ -1,0 +1,8 @@
+Quiz 7 - Maxime Côté-Gagné - 8851539
+(define (unefois liste)
+  (if (or (null? liste) (null? (cdr liste)))
+   liste
+   (let ((lcdr (unefois (cdr liste))))
+     (if (equal? (car liste) (car lcdr))
+     lcdr
+     (cons (car liste) lcdr)))))

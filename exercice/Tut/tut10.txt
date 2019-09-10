@@ -1,0 +1,62 @@
+package main
+
+import "fmt"
+import "math"
+
+// Commentaire
+
+func main() {
+	r := rect{largeur: 4, hauteur: 6}
+	car := carre{largeur: 5}
+	cer := cercle{rayon: 12}
+	mesure(r)
+	mesure(car)
+	mesure(cer)
+}
+
+type rect struct{
+	largeur, hauteur float64
+}
+
+func (r rect) aire() float64 {
+	return r.largeur * r.hauteur
+}
+
+func (r rect) perim() float64 {
+	return 2*(r.largeur + r.hauteur)
+}
+
+type carre struct{
+	largeur float64
+}
+
+func (c carre) aire() float64 {
+	return c.largeur * c.largeur
+}
+
+func (c carre) perim() float64 {
+	return 4*(c.largeur)
+}
+
+type cercle struct{
+	rayon float64
+}
+
+func (c cercle) aire() float64 {
+	return c.rayon * c.rayon * math.Pi
+}
+
+func (c cercle) perim() float64 {
+	return 2*math.Pi*c.rayon
+}
+
+type formeGeo interface{
+	aire() float64
+	perim() float64
+}
+
+func mesure(f formeGeo) {
+	fmt.Println(f)
+	fmt.Println("Aire:", f.aire())
+	fmt.Println("Perimetre:", f.perim())
+} 
